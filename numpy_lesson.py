@@ -26,5 +26,16 @@ def test_run():
     print(np.random.randint(0, 10, size=5))  # 5 random integers as a 1D array
     print(np.random.randint(0, 10, size=(2, 3)))  # 2x3 array of random integers
 
+
+def test_run2():
+    a = np.random.random((5, 4))  # 5x4 array of random numbers
+    print(a)
+    print(a.shape)
+    print(a.shape[0])  # number of rows
+    print(a.shape[1])  # number of columns
+    print(len(a.shape))  # dimension of array
+    print(a.size)  # number of elements in array
+    print(a.dtype)  # element type
+
 if __name__ == "__main__":
-    test_run()
+    test_run2()
