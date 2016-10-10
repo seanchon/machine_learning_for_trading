@@ -1,5 +1,7 @@
 """Creating NumPy arrays."""
+from lib.time_function import how_long
 import numpy as np
+import time
 
 
 def test_run():
@@ -58,5 +60,43 @@ def test_run3():
     print("Mean of all elements:\n{}".format(a.mean()))  # leave out axis arg
 
 
+def test_run4():
+    t1 = time.time()
+    print("ML4T")
+    t2 = time.time()
+    print("The time taken by print() is {} seconds".format(t2 - t1))
+
+
+def manual_mean(arr):
+    """Compute mean (average) of all elements in a given 2D array."""
+    sum = 0
+    for i in xrange(0, arr.shape[0]):
+        for j in xrange(0, arr.shape[1]):
+            sum = sum + arr[i, j]
+
+    return sum / arr.size
+
+
+def numpy_mean(arr):
+    """Compute mean (average) using NumPy."""
+    return arr.mean()
+
+
+def test_run5():
+    nd1 = np.random.random((1000, 10000))  # use a sufficiently large array
+
+    # Time the two functions, retrieving results and execution times
+    res_manual, t_manual = how_long(manual_mean, nd1)
+    res_numpy, t_numpy = how_long(numpy_mean, nd1)
+    print("Manual: {:.6f} ({:.3f} secs.) vs. NumPy: {:.6f} ({:.3f} secs.)".format(res_manual, t_manual, res_numpy, t_numpy))
+
+    # Make sure both give us the same answer (up to some precision)
+    assert abs(res_manual - res_numpy) <= 10e-6, "Results are not equal!"
+
+    # Compute speedup
+    speedup = t_manual / t_numpy
+    print("NumPy mean is {} times faster than manual for loops.".format(speedup))
+
+
 if __name__ == "__main__":
-    test_run3()
+    test_run5()
