@@ -37,5 +37,26 @@ def test_run2():
     print(a.size)  # number of elements in array
     print(a.dtype)  # element type
 
+
+def test_run3():
+    np.random.seed(693)  # seed the random number generator
+    a = np.random.randint(0, 10, size=(5, 4))  # 5x4 random integers in [0, 10)
+    print("Array:\n{}".format(a))
+
+    # Sum of all elements
+    print("Sum of all elements: {}".format(a.sum()))
+
+    # Iterate over rows to compute sum of each column
+    print("Sum of each column:\n{}".format(a.sum(axis=0)))
+
+    # Iterate over column to compute sum of each row
+    print("Sum of each row:\n{}".format(a.sum(axis=1)))
+
+    # Statistics: min, max, mean (across rows, cols, and overall)
+    print("Minimum of each column:\n{}".format(a.min(axis=0)))
+    print("Maximum of each row:\n{}".format(a.max(axis=1)))
+    print("Mean of all elements:\n{}".format(a.mean()))  # leave out axis arg
+
+
 if __name__ == "__main__":
-    test_run2()
+    test_run3()
