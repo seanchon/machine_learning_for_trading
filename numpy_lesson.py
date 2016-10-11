@@ -161,5 +161,28 @@ def test_run9():
     print(a)
 
 
+def test_run10():
+    a = np.array([(1, 2, 3, 4, 5), (10, 20, 30, 40, 50)])
+    print("Original array:\n{}".format(a))
+
+    # Multiply by two
+    print("\nMultiply by two:\n{}".format(a * 2))
+
+    # Divide by two (using decimal to get float values instead of rounded-off ints)
+    print("\nDivide by two:\n{}".format(a / 2.0))
+
+    b = np.array([(100, 200, 300, 400, 500), (1, 2, 3, 4, 5)])
+    print("\nOriginal array b:\n{}".format(b))
+
+    # Add the two arrays
+    print("\nAdd a + b:\n{}".format(a + b))
+
+    # Multiply the two arrays
+    print("\nMultiply a * b:\n{}".format(a * b))
+
+    # Divide the two arrays (convert one array to float in order to get float results)
+    print("\nDivide a / b:\n{}".format(a / b.astype(float)))
+
+
 if __name__ == "__main__":
-    test_run9()
+    test_run10()
