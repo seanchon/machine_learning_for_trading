@@ -132,8 +132,18 @@ def test_run7():
 
     # Assigning a list to a column in an array
     a[:, 3] = [1, 2, 3, 4, 5]
-    print("\nModified (replaced column with a list):\n{}".format(a))    
+    print("\nModified (replaced column with a list):\n{}".format(a))
+
+
+def test_run8():
+    a = np.random.rand(5)
+    print(a)
+
+    # Accessing using a list of indices
+    indices = np.array([1, 1, 2, 3])
+
+    print(a[indices])
 
 
 if __name__ == "__main__":
-    test_run7()
+    test_run8()
