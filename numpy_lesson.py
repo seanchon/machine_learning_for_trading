@@ -145,5 +145,21 @@ def test_run8():
     print(a[indices])
 
 
+def test_run9():
+    a = np.array([(20, 25, 10, 23, 26, 32, 10, 5, 0), (0, 2, 50, 20, 0, 1, 28, 5, 0)])
+    print(a)
+
+    # Calculating mean
+    mean = a.mean()
+    print(mean)
+
+    # Masking (print values less than mean)
+    print(a[a<mean])
+
+    # Masking (replace values less than mean with mean value)
+    a[a<mean] = mean
+    print(a)
+
+
 if __name__ == "__main__":
-    test_run8()
+    test_run9()
