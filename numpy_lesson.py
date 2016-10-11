@@ -117,5 +117,23 @@ def test_run6():
     print(a[:, 0:3:2])
 
 
+def test_run7():
+    a = np.random.rand(5, 4)
+    print("Array:\n{}".format(a))
+
+    # Assigning a value to a particular location
+    a[0, 0] = 1
+    print("\nModified (replaced one element):\n{}".format(a))
+
+    # Assigning a single value to an entire row
+    a[2, :] = 1
+    print("\nModified (replaced row with a single value):\n{}".format(a))
+
+
+    # Assigning a list to a column in an array
+    a[:, 3] = [1, 2, 3, 4, 5]
+    print("\nModified (replaced column with a list):\n{}".format(a))    
+
+
 if __name__ == "__main__":
-    test_run6()
+    test_run7()
