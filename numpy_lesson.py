@@ -129,7 +129,6 @@ def test_run7():
     a[2, :] = 1
     print("\nModified (replaced row with a single value):\n{}".format(a))
 
-
     # Assigning a list to a column in an array
     a[:, 3] = [1, 2, 3, 4, 5]
     print("\nModified (replaced column with a list):\n{}".format(a))
@@ -154,10 +153,10 @@ def test_run9():
     print(mean)
 
     # Masking (print values less than mean)
-    print(a[a<mean])
+    print(a[a < mean])
 
     # Masking (replace values less than mean with mean value)
-    a[a<mean] = mean
+    a[a < mean] = mean
     print(a)
 
 
