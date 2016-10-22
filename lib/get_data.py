@@ -12,11 +12,17 @@ def symbol_to_path(symbol, base_dir="data"):
     return os.path.join(base_dir, "{}.csv".format(str(symbol)))
 
 
-def get_data(symbols, dates):
+def get_data(symbols, start_date, end_date, fetch=True):
     """Read stock data (adjusted close) for given symbols from CSV files."""
-    df = pd.DataFrame(index=dates)
+    for symbol in symbols:
+        get_stock_csv(symbol, start_date, end_date, "data/{}.csv".format(symbol))
+
+    get_stock_csv('SPY', start_date, end_date, "data/SPY.csv")
     if 'SPY' not in symbols:  # add SPY for reference, if absent
         symbols.insert(0, 'SPY')
+
+    dates = pd.date_range(start_date, end_date)
+    df = pd.DataFrame(index=dates)
 
     for symbol in symbols:
         path = symbol_to_path(symbol)
