@@ -16,7 +16,7 @@ def compute_daily_returns(df):
 
 def test_run():
     # Read data
-    symbols = ['SPY']
+    symbols = ['SPY', 'XOM']
     df = get_data(symbols, '2009-01-01', '2012-12-31')
     plot_data(df)
 
@@ -25,21 +25,25 @@ def test_run():
     plot_data(daily_returns, title="Daily Returns")
 
     # Plot a histogram
-    daily_returns.hist(bins=20)
+    for symbol in symbols:
+        daily_returns[symbol].hist(bins=20, label=symbol)
 
     # Get mean and standard deviation
-    mean = daily_returns['SPY'].mean()
-    print("mean={}".format(mean))
-    std = daily_returns['SPY'].std()
-    print("std={}".format(std))
+    for symbol in symbols:
+        mean = daily_returns[symbol].mean()
+        print("{}: mean={}".format(symbol, mean))
+        std = daily_returns[symbol].std()
+        print("{}: std={}".format(symbol, std))
 
     # Compute kurtosis
     print(daily_returns.kurtosis())
 
     # Add mean and std to graph
-    plt.axvline(mean, color='w', linestyle='dashed', linewidth=2)
-    plt.axvline(mean + std, color='r', linestyle='dashed', linewidth=2)
-    plt.axvline(mean - std, color='r', linestyle='dashed', linewidth=2)
+    # plt.axvline(mean, color='w', linestyle='dashed', linewidth=2)
+    # plt.axvline(mean + std, color='r', linestyle='dashed', linewidth=2)
+    # plt.axvline(mean - std, color='r', linestyle='dashed', linewidth=2)
+
+    plt.legend(loc='upper right')
     plt.show()
 
 if __name__ == '__main__':
